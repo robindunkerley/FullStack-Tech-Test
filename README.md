@@ -58,3 +58,6 @@ If you're happy for this test to be visible publicly.
 1) Fork this repository.
 2) Carry out the test.
 3) Once the test is complete, email `techteam@clicknclear.com` with a link to your public repository.
+
+### Incomplete Submission
+If you cannot complete this test, we accept incomplete submissions. To do this, please submit as normal as per the steps outlined above.
