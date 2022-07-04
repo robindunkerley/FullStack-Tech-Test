@@ -57,4 +57,4 @@ If you would prefer this to not be public.
 If you're happy for this test to be visible publicly.
 1) Fork this repository.
 2) Carry out the test.
-3) Once the test is complete, email `techteam@clicknclear.com` with a link to your public repository once you are finished.
+3) Once the test is complete, email `techteam@clicknclear.com` with a link to your public repository.
