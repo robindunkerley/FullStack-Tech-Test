@@ -33,7 +33,7 @@ The API should support the following endpoints:
 ## Requirements
 - Use TypeScript throughout for the API and the UI.
 - Write the API using NodeJS, using a framework such as Fastify or Express.
-- Write the UI in React 18, you may use a component library to assist you.
+- Write the UI in React, you may use a component library to assist you.
 - Your code should be written in a professional manner, as if it was being submitted for a code review.
 
 ## What We're Assessing
