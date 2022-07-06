@@ -31,21 +31,6 @@ function App() {
     setSearch('')
   }
 
-  // useEffect(() => {
-  //  async function fetchData() { 
-  //   setLoading(true)
-  //   const data = await axios({
-  //     method: "GET",
-  //     url: `/api/tracks/artist/${search}`,
-  // }).then(res => {
-  //   setResults(res.data)
-  //   console.log('res: ', res.data)
-  //   setLoading(false)
-  //   })
-  // }
-  // fetchData()
-  // }, [search])
-
   return (
     <div className="App">
       <Header>
