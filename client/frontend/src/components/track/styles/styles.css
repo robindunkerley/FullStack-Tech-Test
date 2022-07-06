@@ -1,5 +1,50 @@
 .track {
-    height: 400px;
-    width: 400px;
-    background-color: grey;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    width: 90%;
+    height: 70px;
+    max-width: 800px;
+    min-width: 300px;
+    background-color: white;
+    margin: 10px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 10px;
+}
+
+.track__icon-container {
+    height: 50px;
+    width: 50px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+    border-radius: 5px;
+    background-color: white;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.track__text-container {
+    height: 55px;
+    flex: 0.95;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+
+}
+
+.track__title-container {
+    text-align: left;
+    font-weight: 500;
+    display: flex;
+    flex-direction: column;
+}
+
+.track__artist-container {
+    text-align: left;
+    font-size: 12px;
+    font-weight: 400;
+    display: flex;
+    justify-content: space-between;
 }
