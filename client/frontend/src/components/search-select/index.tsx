@@ -1,4 +1,5 @@
 import React from 'react'
+import './styles/styles.css'
 
 type Props = {
     handleSelect: (selected: boolean) => void
@@ -7,9 +8,9 @@ type Props = {
 
 const SearchSelect = (props: Props) => {
   return (
-    <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
-        <div style={{height: '15px', width: '15px', border: '1px solid black', borderRadius: '50px'}} onClick={() => props.handleSelect(!props.isSelected)}/>
-        <span style={props.isSelected ? {color: 'red'} : {color: 'black'}}>search by ID</span>
+    <div className='search-select__container' >
+        <div className='search-select__button' onClick={() => props.handleSelect(!props.isSelected)} style={props.isSelected? {backgroundColor: 'green'} : {}}/>
+        <span className='search-select__text'>search by ID</span>
     </div>
   )
 }

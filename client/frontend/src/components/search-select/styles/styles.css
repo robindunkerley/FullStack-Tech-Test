@@ -1,0 +1,19 @@
+.search-select__container {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.search-select__button {
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
+    border: 1px solid black;
+    border-radius: 2px
+}
+
+.search-select__text {
+    color: grey;
+    font-weight: 400;
+    font-size: 12px;
+}

@@ -2,6 +2,7 @@ import React from 'react'
 import Icons from '../../assets'
 
 type Props = {
+    placeholder: string
     handleSearch: (e: any) => void
     handleChange: (e: any) => void
     search: string
@@ -16,7 +17,7 @@ const SearchBar = (props: Props) => {
         <input
         className='search__input'
         type='search'
-        placeholder='Search for a track'
+        placeholder={props.placeholder}
         value={props.search}
         onChange={(e) => props.handleChange(e.target.value)}
         />

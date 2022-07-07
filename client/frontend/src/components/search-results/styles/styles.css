@@ -1,0 +1,13 @@
+.search-results__container {
+    width: 90%; 
+    min-height: 25px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.search-results__results {
+    color: white;
+    
+}

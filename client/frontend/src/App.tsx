@@ -7,15 +7,18 @@ import './App.css';
 import Icons from './assets';
 import SearchBar from './components/search-bar';
 import SearchSelect from './components/search-select';
+import SearchResults from './components/search-results';
 
 
 function App() {
   const [search, setSearch] = React.useState<string>('')
+  const [searchDetails, setSearchDetails] = React.useState<number | null>(null)
   const [results, setResults] = React.useState<any[]| null>(null)
   const [loading, setLoading] = React.useState(false)
   const [selected, setSelected] = React.useState(false)
 
-  const endpoint = selected ? 'api/tracks/artist/' : '/api/tracks/id/'
+  const endpoint = selected ?  '/api/tracks/id/' : 'api/tracks/artist/'
+  const placeholder = selected ? 'Search by track id...' : 'Search by artist name...' 
 
   const handleSearch = async (e: any) => {
     e.preventDefault()
@@ -26,12 +29,14 @@ function App() {
     const response = await fetch(url)
 
     if (!response.ok) {
+      setSearch('')
       throw Error(response.statusText)
     }
 
     const json = await response.json()
 
     setResults(json)
+    setSearchDetails(json.length)
     setSearch('')
   }
 
@@ -50,7 +55,8 @@ function App() {
             onChange={(e) => setSearch(e.target.value)}
             />
         </form> */}
-        <SearchBar handleChange={setSearch} handleSearch={handleSearch} search={search}/>
+        <SearchBar handleChange={setSearch} handleSearch={handleSearch} search={search} placeholder={placeholder}/>
+
         {/* <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
           <div style={{height: '15px', width: '15px', border: '1px solid black', borderRadius: '50px'}} onClick={() =>setSelected(!selected)}/>
           <span style={selected ? {color: 'red'} : {color: 'black'}}>search by ID</span>
@@ -58,6 +64,10 @@ function App() {
         <SearchSelect handleSelect={setSelected} isSelected={selected}/>
       </Header>
       <DataDisplay>
+      {searchDetails !== null && <>
+      <SearchResults results={searchDetails}/>
+      </>}
+
       {results?.map((data) => {
         return (
           <Track key={data.item.id} artist={data.item.artist} title={data.item.title} id={data.item.id}/>
