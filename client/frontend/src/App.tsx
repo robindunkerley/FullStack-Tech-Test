@@ -4,8 +4,9 @@ import Track from './components/track';
 import DataDisplay from './components/data-display';
 import axios from 'axios'
 import './App.css';
-import SearchInput from './components/search-input';
 import Icons from './assets';
+import SearchBar from './components/search-bar';
+import SearchSelect from './components/search-select';
 
 
 function App() {
@@ -34,14 +35,10 @@ function App() {
     setSearch('')
   }
 
-  console.log(endpoint)
-
-  console.log(results)
-
   return (
     <div className="App">
       <Header>
-          <form className='search__input-container' onSubmit={handleSearch}>
+          {/* <form className='search__input-container' onSubmit={handleSearch}>
             <div className='search__icon-container'>
                 <img className='search__icon' src={Icons.SearchIcon}/>
             </div>
@@ -52,11 +49,13 @@ function App() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             />
-        </form>
-        <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
+        </form> */}
+        <SearchBar handleChange={setSearch} handleSearch={handleSearch} search={search}/>
+        {/* <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
           <div style={{height: '15px', width: '15px', border: '1px solid black', borderRadius: '50px'}} onClick={() =>setSelected(!selected)}/>
           <span style={selected ? {color: 'red'} : {color: 'black'}}>search by ID</span>
-        </div>
+        </div> */}
+        <SearchSelect handleSelect={setSelected} isSelected={selected}/>
       </Header>
       <DataDisplay>
       {results?.map((data) => {

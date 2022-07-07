@@ -67,7 +67,6 @@ app.get('/api/tracks/id/:input', (req: Request, res: Response) => {
     }
 })
 
-
 app.get('/api/tracks/artist/:input', (req: Request, res: Response) => {
     const input: string = req.params.input
     const artistSearch: ArtistSearchResult = fuse.search(input)
