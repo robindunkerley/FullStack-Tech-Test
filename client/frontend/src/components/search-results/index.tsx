@@ -2,19 +2,19 @@ import React from 'react'
 import './styles/styles.css'
 
 type Props = {
-    results: number | null
+    numberOfResults: number | null
 }
 
-const SearchResults = (props: Props) => {
-    const resultText = props.results !== 1 ? 'results' : 'result'
+const SearchResultNumber = (props: Props) => {
+    const resultText = props.numberOfResults !== 1 ? 'results' : 'result'
     
-    if(props.results === null) return <></>
+    if(props.numberOfResults === null) return <></>
     
     return (
         <div className='search-results__container'>
-            <span className='search-results__results'>{props.results} {resultText}</span>
+            <span className='search-results__results'>{props.numberOfResults} {resultText}</span>
         </div>
     )
 }
 
-export default SearchResults
+export default SearchResultNumber

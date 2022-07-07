@@ -4,7 +4,7 @@ import DataDisplay from './components/data-display';
 import './App.css';
 import SearchBar from './components/search-bar';
 import SearchSelect from './components/search-select';
-import SearchResults from './components/search-results';
+import SearchResultNumber from './components/search-results';
 import Tracks from './components/tracks';
 import { ResponseData } from './utils/types'
 
@@ -45,7 +45,7 @@ function App() {
         <SearchSelect handleSelect={setSelected} isSelected={selected}/>
       </Header>
       <DataDisplay>
-        <SearchResults results={searchDetails}/>
+        <SearchResultNumber numberOfResults={searchDetails}/>
         <Tracks results={results}/>
       </DataDisplay>
     </div>
