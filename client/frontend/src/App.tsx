@@ -1,20 +1,17 @@
-import React, {useEffect} from 'react'; 
+import React from 'react'; 
 import Header from './components/header';
-import Track from './components/track';
 import DataDisplay from './components/data-display';
-import axios from 'axios'
 import './App.css';
-import Icons from './assets';
 import SearchBar from './components/search-bar';
 import SearchSelect from './components/search-select';
 import SearchResults from './components/search-results';
+import Tracks from './components/tracks';
 
 
 function App() {
   const [search, setSearch] = React.useState<string>('')
   const [searchDetails, setSearchDetails] = React.useState<number | null>(null)
   const [results, setResults] = React.useState<any[]| null>(null)
-  const [loading, setLoading] = React.useState(false)
   const [selected, setSelected] = React.useState(false)
 
   const endpoint = selected ?  '/api/tracks/id/' : 'api/tracks/artist/'
@@ -30,6 +27,8 @@ function App() {
 
     if (!response.ok) {
       setSearch('')
+      setResults(null)
+      setSearchDetails(0)
       throw Error(response.statusText)
     }
 
@@ -46,14 +45,8 @@ function App() {
         <SearchSelect handleSelect={setSelected} isSelected={selected}/>
       </Header>
       <DataDisplay>
-      {searchDetails !== null &&
         <SearchResults results={searchDetails}/>
-      }
-      {results?.map((data) => {
-        return (
-          <Track key={data.item.id} artist={data.item.artist} title={data.item.title} id={data.item.id}/>
-        )
-      })}
+        <Tracks results={results}/>
       </DataDisplay>
     </div>
   );
