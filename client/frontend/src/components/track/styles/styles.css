@@ -53,3 +53,9 @@
     overflow: hidden;
     white-space: nowrap;
 }
+
+.track__artist {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; 
+}
