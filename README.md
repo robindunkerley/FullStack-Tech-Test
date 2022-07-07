@@ -1,5 +1,7 @@
 Install & run steps:
 
+* make sure you have cloned and are in main branch *
+
 1. cd api 
 2. npm install
 3. cd client/frontend
