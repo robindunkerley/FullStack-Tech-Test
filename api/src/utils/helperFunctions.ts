@@ -15,12 +15,12 @@ export type RTNArtistSearch = TracksDataShape | undefined
 
 export type RTNTrackId = TrackShape | undefined
 
-export const searchById = (input: string, dataSet: TracksDataShape): RTNTrackId => {
+export const searchById = (input: string, dataSet: TracksDataShape): RTNArtistSearch => {
     const isNum = /^\d+$/.test(input)
     if(!isNum) {
         return undefined
     } else {
-        return dataSet.find(track => track.id === parseInt(input))
+        return dataSet.filter(track => track.id === parseInt(input))
     }
 }
 
@@ -33,7 +33,6 @@ export const searchByArtist = (input: string, dataSet: TracksDataShape): RTNArti
         return search
     }
 }
-
 
 // Unused functions
 

@@ -1,10 +1,40 @@
 import express, {Request, Response} from 'express'
 import {searchById, searchByArtist, TracksDataShape, RTNArtistSearch, RTNTrackId} from './utils/helperFunctions'
 import tracksJson from './tracks.json'
+import Fuse from 'fuse.js'
 
 const app = express()
 const port = process.env.PORT || 3001
 const tracksData: TracksDataShape = tracksJson.tracks
+
+
+const options = {
+    isCaseSensitive: false,
+    includeScore: false,
+    shouldSort: true,
+    includeMatches: false,
+    findAllMatches: false,
+    minMatchCharLength: 1,
+    location: 0,
+    threshold: 0.2,
+    distance: 100,
+    useExtendedSearch: false,
+    ignoreLocation: false,
+    ignoreFieldNorm: false,
+    fieldNormWeight: 1,
+    keys: [
+      "artist",
+    ]
+  };
+
+const fuse = new Fuse(tracksData, options)
+
+type ArtistSearchResult = Fuse.FuseResult<{
+    artist: string;
+    title: string;
+    id: number;
+}>[]
+
 
 // Middleware
 app.use(express.json())
@@ -20,17 +50,36 @@ app.get('/api', (req: Request, res: Response) => {
 
 app.get('/api/tracks/id/:input', (req: Request, res: Response) => {
     const trackId: string = req.params.input
-    const idSearch: RTNTrackId = searchById(trackId, tracksData)
+    const idSearch: RTNArtistSearch = searchById(trackId, tracksData)
     if(idSearch === undefined) {
         res.status(404).send('No matches by track ID')
     } else {
-        res.status(200).send(idSearch)
+        const response = [{  
+            item: {
+                    artist: idSearch[0].artist,
+                    title: idSearch[0].title,
+                    id: idSearch[0].id,
+                }
+            }
+        ]
+        res.status(200).send(response)
     }
 })
 
+// app.get('/api/tracks/:id', (req: Request, res: Response) => {
+//     const trackId: string = req.params.input
+//     const idSearch: RTNTrackId = searchById(trackId, tracksData)
+//     if(idSearch === undefined) {
+//         res.status(404).send('No matches by track ID')
+//     } else {
+//         res.status(200).send(idSearch)
+//     }
+// })
+
+
 app.get('/api/tracks/artist/:input', (req: Request, res: Response) => {
     const input: string = req.params.input
-    const artistSearch: RTNArtistSearch = searchByArtist(input, tracksData)
+    const artistSearch: ArtistSearchResult = fuse.search(input)
     if(artistSearch === undefined) {
         res.status(404).send('No matches by artist name')
     } else {
