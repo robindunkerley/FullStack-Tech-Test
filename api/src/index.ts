@@ -36,6 +36,7 @@ type ArtistSearchResult = Fuse.FuseResult<{
 }>[]
 
 
+
 // Middleware
 app.use(express.json())
 
@@ -50,31 +51,21 @@ app.get('/api', (req: Request, res: Response) => {
 
 app.get('/api/tracks/id/:input', (req: Request, res: Response) => {
     const trackId: string = req.params.input
-    const idSearch: RTNArtistSearch = searchById(trackId, tracksData)
+    const idSearch: RTNTrackId = searchById(trackId, tracksData)
     if(idSearch === undefined) {
         res.status(404).send('No matches by track ID')
     } else {
         const response = [{  
             item: {
-                    artist: idSearch[0].artist,
-                    title: idSearch[0].title,
-                    id: idSearch[0].id,
+                    artist: idSearch.artist,
+                    title: idSearch.title,
+                    id: idSearch.id,
                 }
             }
         ]
         res.status(200).send(response)
     }
 })
-
-// app.get('/api/tracks/:id', (req: Request, res: Response) => {
-//     const trackId: string = req.params.input
-//     const idSearch: RTNTrackId = searchById(trackId, tracksData)
-//     if(idSearch === undefined) {
-//         res.status(404).send('No matches by track ID')
-//     } else {
-//         res.status(200).send(idSearch)
-//     }
-// })
 
 
 app.get('/api/tracks/artist/:input', (req: Request, res: Response) => {
