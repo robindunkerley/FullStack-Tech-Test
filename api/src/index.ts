@@ -34,14 +34,8 @@ type ArtistSearchResult = Fuse.FuseResult<{
     id: number;
 }>[]
 
-
-
 // Middleware
 app.use(express.json())
-
-app.get('/api', (req: Request, res: Response) => {
-    return res.json(tracksJson)
-})
 
 // I decided to go with 2 separate endpoints based on a consideration of the usecase / UX
 // there is a potential for crossover between an artist name and an ID e.g. artists that have a number as their alias

@@ -25,7 +25,7 @@ export const searchById = (input: string, dataSet: TracksDataShape): RTNTrackId 
 // This would be potentially useful for a single endpoint search
 // However - it assumes that the track ID will always be relative to its index in the dataset - thus I decided not to use it
 // This could could cause problems later down the line in an application e.g. if a track is removed, and the IDs are not correctly updated
-const searchByIndex = (input: string, dataSet: TracksDataShape):  RTNTrackId => {
+const searchByIndex = (input: string, dataSet: TracksDataShape): RTNTrackId => {
     const isNum = /^\d+$/.test(input)
     if(!isNum) {
         return undefined
