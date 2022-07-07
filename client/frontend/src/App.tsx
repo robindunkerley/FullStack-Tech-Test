@@ -34,7 +34,6 @@ function App() {
     }
 
     const json = await response.json()
-
     setResults(json)
     setSearchDetails(json.length)
     setSearch('')
@@ -43,31 +42,13 @@ function App() {
   return (
     <div className="App">
       <Header>
-          {/* <form className='search__input-container' onSubmit={handleSearch}>
-            <div className='search__icon-container'>
-                <img className='search__icon' src={Icons.SearchIcon}/>
-            </div>
-            <input
-            className='search__input'
-            type='search'
-            placeholder='Search for a track'
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            />
-        </form> */}
         <SearchBar handleChange={setSearch} handleSearch={handleSearch} search={search} placeholder={placeholder}/>
-
-        {/* <div style={{ display: 'flex', alignItems: 'center', marginLeft: '10px'}}>
-          <div style={{height: '15px', width: '15px', border: '1px solid black', borderRadius: '50px'}} onClick={() =>setSelected(!selected)}/>
-          <span style={selected ? {color: 'red'} : {color: 'black'}}>search by ID</span>
-        </div> */}
         <SearchSelect handleSelect={setSelected} isSelected={selected}/>
       </Header>
       <DataDisplay>
-      {searchDetails !== null && <>
-      <SearchResults results={searchDetails}/>
-      </>}
-
+      {searchDetails !== null &&
+        <SearchResults results={searchDetails}/>
+      }
       {results?.map((data) => {
         return (
           <Track key={data.item.id} artist={data.item.artist} title={data.item.title} id={data.item.id}/>
