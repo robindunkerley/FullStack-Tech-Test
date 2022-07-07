@@ -1,12 +1,11 @@
 import express, {Request, Response} from 'express'
-import {searchById, searchByArtist, TracksDataShape, RTNArtistSearch, RTNTrackId} from './utils/helperFunctions'
+import {searchById, TracksDataShape, RTNTrackId} from './utils/helperFunctions'
 import tracksJson from './tracks.json'
 import Fuse from 'fuse.js'
 
 const app = express()
 const port = process.env.PORT || 3001
 const tracksData: TracksDataShape = tracksJson.tracks
-
 
 const options = {
     isCaseSensitive: false,

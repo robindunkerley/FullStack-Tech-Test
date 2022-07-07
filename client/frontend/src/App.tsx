@@ -6,13 +6,13 @@ import SearchBar from './components/search-bar';
 import SearchSelect from './components/search-select';
 import SearchResults from './components/search-results';
 import Tracks from './components/tracks';
-
+import { ResponseData } from './utils/types'
 
 function App() {
   const [search, setSearch] = React.useState<string>('')
   const [searchDetails, setSearchDetails] = React.useState<number | null>(null)
-  const [results, setResults] = React.useState<any[]| null>(null)
-  const [selected, setSelected] = React.useState(false)
+  const [results, setResults] = React.useState<ResponseData | null>(null)
+  const [selected, setSelected] = React.useState<boolean>(false)
 
   const endpoint = selected ?  '/api/tracks/id/' : 'api/tracks/artist/'
   const placeholder = selected ? 'Search by track id...' : 'Search by artist name...' 

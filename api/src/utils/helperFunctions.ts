@@ -1,15 +1,10 @@
-export type TracksDataShape = {
-    artist: string,
-    title: string,
-    id: number
-}[]
-
-
 export type TrackShape = {
     artist: string,
     title: string,
     id: number
 }
+
+export type TracksDataShape = TrackShape[]
 
 export type RTNArtistSearch = TracksDataShape | undefined
 
@@ -24,18 +19,7 @@ export const searchById = (input: string, dataSet: TracksDataShape): RTNTrackId 
     }
 }
 
-
-export const searchByArtist = (input: string, dataSet: TracksDataShape): RTNArtistSearch => {
-    const search = dataSet.filter(track => track.artist.toLocaleLowerCase() === input.toLocaleLowerCase())
-    if(search.length < 1) {
-        return undefined
-    } else {
-        return search
-    }
-}
-
 // Unused functions
-
 
 // Initially - using this search was attractive for its time complexity - O(1)
 // This would be potentially useful for a single endpoint search

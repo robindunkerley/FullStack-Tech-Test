@@ -1,8 +1,9 @@
 import React from 'react'
 import Track from '../track/index'
+import {ResponseData} from '../../utils/types'
 
 type Props = {
-    results: any[] | null
+    results: ResponseData | null
 }
 
 const Tracks = (props: Props) => {
