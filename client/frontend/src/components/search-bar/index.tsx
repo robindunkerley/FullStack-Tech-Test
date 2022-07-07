@@ -1,4 +1,5 @@
 import React from 'react'
+import './styles/styles.css'
 import Icons from '../../assets'
 
 type Props = {
