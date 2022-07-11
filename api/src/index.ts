@@ -55,23 +55,6 @@ app.post('/api/newtrack', (req, res) => {
     res.send(tracksData)
 })
 
-// Pagination
-const sliceMiddleware = (dataSet: TrackShape[]) => {
-    return (req: Request, res: Response, next: NextFunction) => {
-        const page = req.query.page?.toString()
-        const limit = req.query.limit?.toString()
-        if(page !== undefined && limit !== undefined) {
-            let startIndex = (parseInt(page) - 1) * parseInt(limit)
-            let endIndex = parseInt(page) * parseInt(limit)
-            res.send(dataSet.slice(startIndex, endIndex))
-        } else {
-            res.send([])
-        }
-    }
-}
-// example - /api/tracks/?page=1&limit=20
-app.get('/api/tracks/', sliceMiddleware(tracksData))
-
 app.listen(port, () => {
     console.log(`application listening at http://localhost:${port}`)
 })
