@@ -1,22 +1,7 @@
-export type TrackShape = {
-    artist: string,
-    title: string,
-    id: number
-}
+import { TrackShape } from "../../../types"
 
-export type TracksDataShape = TrackShape[]
-
-export type RTNArtistSearch = TracksDataShape | undefined
-
-export type RTNTrackId = TrackShape | undefined
-
-export const searchById = (input: string, dataSet: TracksDataShape): RTNTrackId => {
-    const isNum = /^\d+$/.test(input)
-    if(!isNum) {
-        return undefined
-    } else {
-        return dataSet.find(track => track.id === parseInt(input))
-    }
+export const searchById = (input: string, dataSet: TrackShape[]): TrackShape | undefined => {
+    return dataSet.find(track => track?.id?.toString() === input)
 }
 
 // Unused functions
@@ -25,11 +10,12 @@ export const searchById = (input: string, dataSet: TracksDataShape): RTNTrackId 
 // This would be potentially useful for a single endpoint search
 // However - it assumes that the track ID will always be relative to its index in the dataset - thus I decided not to use it
 // This could could cause problems later down the line in an application e.g. if a track is removed, and the IDs are not correctly updated
-const searchByIndex = (input: string, dataSet: TracksDataShape): RTNTrackId => {
-    const isNum = /^\d+$/.test(input)
-    if(!isNum) {
-        return undefined
-    } else {
-        return dataSet[parseInt(input) - 1]
-    }
-}
+
+// const searchByIndex = (input: string, dataSet: TrackShape[]): TrackShape | undefined => {
+//     const isNum = /^\d+$/.test(input)
+//     if(!isNum) {
+//         return undefined
+//     } else {
+//         return dataSet[parseInt(input) - 1]
+//     }
+// }

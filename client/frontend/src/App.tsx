@@ -6,12 +6,12 @@ import SearchBar from './components/search-bar';
 import SearchSelect from './components/search-select';
 import SearchResultNumber from './components/search-results';
 import Tracks from './components/tracks';
-import { ResponseData } from './utils/types'
+import {EndpointResponse} from '../../../types'
 
 function App() {
   const [search, setSearch] = React.useState<string>('')
   const [searchDetails, setSearchDetails] = React.useState<number | null>(null)
-  const [results, setResults] = React.useState<ResponseData | null>(null)
+  const [results, setResults] = React.useState<EndpointResponse>([])
   const [selected, setSelected] = React.useState<boolean>(false)
 
   const endpoint = selected ?  '/api/tracks/id/' : 'api/tracks/artist/'
@@ -27,7 +27,7 @@ function App() {
 
     if (!response.ok) {
       setSearch('')
-      setResults(null)
+      setResults([])
       setSearchDetails(0)
       throw Error(response.statusText)
     }

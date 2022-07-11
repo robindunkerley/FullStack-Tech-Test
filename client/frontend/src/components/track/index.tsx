@@ -20,7 +20,7 @@ const Track = (props: Props) => {
         </div>
         <div className='track__artist-container'>
           <span className='track__artist'>{props.artist}</span>
-          <span>id: {props.id}</span>
+          <span style={{whiteSpace: 'nowrap'}}>id: {props.id}</span>
         </div>
       </div>
     </div>
